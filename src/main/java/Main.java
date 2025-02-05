@@ -2,6 +2,7 @@ import java.util.Scanner;
 
 public class Main {
     public static final String DIVIDER = "--------------------------";
+    public static final String NL = System.lineSeparator(); // New Line
 
     private static int count = 0;
     private static final Task[] list = new Task[100];
@@ -19,25 +20,29 @@ public class Main {
 
     public static void checkInput(String msg) {
         if (msg.equals("list")) {
-            System.out.println("\n" + DIVIDER + "\nTasks:");
+            System.out.println(NL + DIVIDER + NL + "Tasks:");
             for (int i = 0; i < count; i++) {
                 System.out.println((i + 1) + ". " + list[i]);
             }
-            System.out.println(DIVIDER + "\n");
+            System.out.println(DIVIDER + NL);
         } else if (msg.startsWith("mark ")) {
             int index = Integer.parseInt(msg.substring(5));
             list[index - 1].mark();
-            System.out.println("\n" + DIVIDER);
-            System.out.println("Congratulations! The following task has been marked as complete:");
-            System.out.println("  " + list[index - 1]);
-            System.out.println(DIVIDER + "\n");
+            System.out.println(
+                NL + DIVIDER + NL +
+                "Congratulations! The following task has been marked as complete:" +
+                NL + "  " + list[index - 1] + NL +
+                DIVIDER + NL
+            );
         } else if (msg.startsWith("unmark ")) {
             int index = Integer.parseInt(msg.substring(7));
             list[index - 1].unmark();
-            System.out.println("\n" + DIVIDER);
-            System.out.println("Got it! The following task has been marked as incomplete:");
-            System.out.println("  " + list[index - 1]);
-            System.out.println(DIVIDER + "\n");
+            System.out.println(
+                NL + DIVIDER + NL +
+                "Got it! The following task has been marked as incomplete:" +
+                NL + "  " + list[index - 1] + NL +
+                DIVIDER + NL
+            );
         } else {
             int type = 0; // defaults to to-do if no prefix
             int index = 0;
@@ -53,28 +58,34 @@ public class Main {
             }
 
             list[count] = new Task(msg.substring(index), type);
-            System.out.println("\n" + DIVIDER + "\n" +
-                    "The following task has been added: \n" +
-                    "  " + list[count] + "\n" +
-                    "You now have " + (count + 1) + " tasks in the list. \n" +
-                    DIVIDER + "\n");
+            System.out.println(
+                NL + DIVIDER + NL +
+                "The following task has been added:" +
+                NL + "  " + list[count] + NL +
+                "You now have " + (count + 1) + " tasks in the list." +
+                NL + DIVIDER + NL
+            );
             count++;
         }
     }
 
     public static void main(String[] args) {
         Scanner msg = new Scanner(System.in);
-        System.out.println(DIVIDER + "\n" +
-                "Bonjour et bievenue! Vous pouvez m'appeler Baguette! \n" +
-                "What do you think about my intro? :D \n" +
-                "Anyhow, what are we thinking today? \n" +
-                DIVIDER + "\n");
+        System.out.println(
+            DIVIDER + NL +
+            "Bonjour et bievenue! Vous pouvez m'appeler Baguette!" +
+            NL + "What do you think about my intro? :D" + NL +
+            "Anyhow, what are we thinking today?" +
+            NL + DIVIDER + NL
+        );
         while (true) {
             String input = msg.nextLine();
             if (input.equals("bye")) {
-                System.out.println("\n" + DIVIDER + "\n" +
-                        "Have a nice day! \n" +
-                        DIVIDER);
+                System.out.println(
+                    NL + DIVIDER + NL +
+                    "Have a nice day!" +
+                     NL + DIVIDER
+                );
                 return;
             }
             checkInput(input);

@@ -1,19 +1,23 @@
-class Task {
-    String desc;
-    boolean isDone;
-    int type; // 0: T, 1: D, 2: E
+public class Task {
+    private String desc;
+    private boolean isDone;
 
-    Task(String description, int type) {
+    // Type 0: To-do (default)
+    // Type 1: Deadline
+    // Type 2: Event
+    private int type;
+
+    public Task(String description, int type) {
         this.desc = description;
         this.isDone = false;
         this.type = type;
     }
 
-    void mark() {
+    public void mark() {
         this.isDone = true;
     }
 
-    void unmark() {
+    public void unmark() {
         this.isDone = false;
     }
 
