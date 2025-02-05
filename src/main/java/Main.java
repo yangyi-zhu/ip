@@ -19,7 +19,7 @@ public class Main {
 
     public static void checkInput(String msg) {
         if (msg.equals("list")) {
-            System.out.println("\n" + DIVIDER);
+            System.out.println("\n" + DIVIDER + "\nTasks:");
             for (int i = 0; i < count; i++) {
                 System.out.println((i + 1) + ". " + list[i]);
             }
@@ -39,11 +39,26 @@ public class Main {
             System.out.println("  " + list[index - 1]);
             System.out.println(DIVIDER + "\n");
         } else {
-            list[count] = new Task(msg);
-            count++;
+            int type = 0; // defaults to to-do if no prefix
+            int index = 0;
+
+            if (msg.startsWith("todo ")) {
+                index = 5;
+            } else if (msg.startsWith("deadline ")) {
+                type = 1;
+                index = 9;
+            } else if (msg.startsWith("event ")) {
+                type = 2;
+                index = 6;
+            }
+
+            list[count] = new Task(msg.substring(index), type);
             System.out.println("\n" + DIVIDER + "\n" +
-                    "added: " + msg + "\n" +
+                    "The following task has been added: \n" +
+                    "  " + list[count] + "\n" +
+                    "You now have " + (count + 1) + " tasks in the list. \n" +
                     DIVIDER + "\n");
+            count++;
         }
     }
 
