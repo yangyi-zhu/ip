@@ -4,7 +4,7 @@ public class Main {
     public static final String DIVIDER = "--------------------------";
 
     private static int count = 0;
-    private static final String[] list = new String[100];
+    private static final Task[] list = new Task[100];
 
     /**
     public static void echo(String msg) {
@@ -18,16 +18,28 @@ public class Main {
      */
 
     public static void checkInput(String msg) {
-        switch (msg) {
-        case "list":
+        if (msg.equals("list")) {
             System.out.println("\n" + DIVIDER);
             for (int i = 0; i < count; i++) {
                 System.out.println((i + 1) + ". " + list[i]);
             }
             System.out.println(DIVIDER + "\n");
-            break;
-        default:
-            list[count] = msg;
+        } else if (msg.startsWith("mark ")) {
+            int index = Integer.parseInt(msg.substring(5));
+            list[index - 1].mark();
+            System.out.println("\n" + DIVIDER);
+            System.out.println("Congratulations! The following task has been marked as complete:");
+            System.out.println("  " + list[index - 1]);
+            System.out.println(DIVIDER + "\n");
+        } else if (msg.startsWith("unmark ")) {
+            int index = Integer.parseInt(msg.substring(7));
+            list[index - 1].unmark();
+            System.out.println("\n" + DIVIDER);
+            System.out.println("Got it! The following task has been marked as incomplete:");
+            System.out.println("  " + list[index - 1]);
+            System.out.println(DIVIDER + "\n");
+        } else {
+            list[count] = new Task(msg);
             count++;
             System.out.println("\n" + DIVIDER + "\n" +
                     "added: " + msg + "\n" +
