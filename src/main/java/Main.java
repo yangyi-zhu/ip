@@ -7,17 +7,6 @@ public class Main {
     private static int count = 0;
     private static final Task[] list = new Task[100];
 
-    /**
-    public static void echo(String msg) {
-        if (msg.equals("bye")) return;
-        System.out.println("\n" + "-------------------------- \n" +
-                msg + "\n" +
-                "-------------------------- \n");
-        Scanner newMsg = new Scanner(System.in);
-        echo(newMsg.nextLine());
-    }
-     */
-
     public static void checkInput(String msg) {
         boolean repeat;
         do {
@@ -51,6 +40,15 @@ public class Main {
 
                 if (msg.startsWith("todo ")) {
                     index = 5;
+                    if (msg.substring(index).isBlank()) {
+                        System.out.println(
+                                NL + DIVIDER + NL +
+                                        "You could forget things if the description was left blank! Try adding a message!" +
+                                        NL + DIVIDER + NL
+                        );
+                        repeat = true;
+                        continue;
+                    }
                     list[count] = new Todo(msg.substring(index));
                 } else if (msg.startsWith("deadline ")) {
                     index = 9;
