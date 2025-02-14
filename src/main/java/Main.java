@@ -19,55 +19,71 @@ public class Main {
      */
 
     public static void checkInput(String msg) {
-        if (msg.equals("list")) {
-            System.out.println(NL + DIVIDER + NL + "Tasks:");
-            for (int i = 0; i < count; i++) {
-                System.out.println((i + 1) + ". " + list[i]);
-            }
-            System.out.println(DIVIDER + NL);
-        } else if (msg.startsWith("mark ")) {
-            int index = Integer.parseInt(msg.substring(5));
-            list[index - 1].mark();
-            System.out.println(
-                NL + DIVIDER + NL +
-                "Congratulations! The following task has been marked as complete:" +
-                NL + "  " + list[index - 1] + NL +
-                DIVIDER + NL
-            );
-        } else if (msg.startsWith("unmark ")) {
-            int index = Integer.parseInt(msg.substring(7));
-            list[index - 1].unmark();
-            System.out.println(
-                NL + DIVIDER + NL +
-                "Got it! The following task has been marked as incomplete:" +
-                NL + "  " + list[index - 1] + NL +
-                DIVIDER + NL
-            );
-        } else {
-            int index;
-
-            if (msg.startsWith("todo ")) {
-                index = 5;
-                list[count] = new Todo(msg.substring(index));
-            } else if (msg.startsWith("deadline ")) {
-                index = 9;
-                list[count] = new Deadline(msg.substring(index), "");
-            } else if (msg.startsWith("event ")) {
-                index = 6;
-                list[count] = new Event(msg.substring(index), "", "");
+        boolean repeat;
+        do {
+            repeat = false;
+            if (msg.equals("list")) {
+                System.out.println(NL + DIVIDER + NL + "Tasks:");
+                for (int i = 0; i < count; i++) {
+                    System.out.println((i + 1) + ". " + list[i]);
+                }
+                System.out.println(DIVIDER + NL);
+            } else if (msg.startsWith("mark ")) {
+                int index = Integer.parseInt(msg.substring(5));
+                list[index - 1].mark();
+                System.out.println(
+                        NL + DIVIDER + NL +
+                                "Congratulations! The following task has been marked as complete:" +
+                                NL + "  " + list[index - 1] + NL +
+                                DIVIDER + NL
+                );
+            } else if (msg.startsWith("unmark ")) {
+                int index = Integer.parseInt(msg.substring(7));
+                list[index - 1].unmark();
+                System.out.println(
+                        NL + DIVIDER + NL +
+                                "Got it! The following task has been marked as incomplete:" +
+                                NL + "  " + list[index - 1] + NL +
+                                DIVIDER + NL
+                );
             } else {
-                list[count] = new Todo(msg);
-            }
+                int index;
 
-            System.out.println(
+                if (msg.startsWith("todo ")) {
+                    index = 5;
+                    list[count] = new Todo(msg.substring(index));
+                } else if (msg.startsWith("deadline ")) {
+                    index = 9;
+                    list[count] = new Deadline(msg.substring(index), "");
+                } else if (msg.startsWith("event ")) {
+                    index = 6;
+                    list[count] = new Event(msg.substring(index), "", "");
+                } else {
+                    repeat = true;
+                    System.out.println(
+                            NL + DIVIDER + NL +
+                                    "The supported types and corresponding formats are as follows:" + NL +
+                                    "To-Dos: todo [description]" + NL +
+                                    "Deadlines: deadline [description] ddl: [DD-MM-YY HH:MM]" + NL +
+                                    "Events: event [description] from: [DD-MM-YY HH:MM] to: [DD-MM-YY HH:MM]" + NL +
+                                    NL + "Examples:" + NL +
+                                    "todo Do the laundry" + NL +
+                                    "deadline CS2113 Increment L5 ddl: 14-02-25 16:00" + NL +
+                                    "event Josh's birthday party from: 03-03-25 15:00 to: 04-03-25 00:00" +
+                                    NL + DIVIDER + NL
+                    );
+                }
+            }
+        } while (repeat);
+
+        System.out.println(
                 NL + DIVIDER + NL +
-                "The following task has been added:" +
-                NL + "  " + list[count] + NL +
-                "You now have " + (count + 1) + " tasks in the list." +
-                NL + DIVIDER + NL
-            );
-            count++;
-        }
+                        "The following task has been added:" +
+                        NL + "  " + list[count] + NL +
+                        "You now have " + (count + 1) + " tasks in the list." +
+                        NL + DIVIDER + NL
+        );
+        count++;
     }
 
     public static void main(String[] args) {
