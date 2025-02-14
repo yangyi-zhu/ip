@@ -44,20 +44,21 @@ public class Main {
                 DIVIDER + NL
             );
         } else {
-            int type = 0; // defaults to to-do if no prefix
-            int index = 0;
+            int index;
 
             if (msg.startsWith("todo ")) {
                 index = 5;
+                list[count] = new Todo(msg.substring(index));
             } else if (msg.startsWith("deadline ")) {
-                type = 1;
                 index = 9;
+                list[count] = new Deadline(msg.substring(index), "");
             } else if (msg.startsWith("event ")) {
-                type = 2;
                 index = 6;
+                list[count] = new Event(msg.substring(index), "", "");
+            } else {
+                list[count] = new Todo(msg);
             }
 
-            list[count] = new Task(msg.substring(index), type);
             System.out.println(
                 NL + DIVIDER + NL +
                 "The following task has been added:" +
