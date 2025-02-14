@@ -43,7 +43,7 @@ public class Main {
                     if (msg.substring(index).isBlank()) {
                         System.out.println(
                                 NL + DIVIDER + NL +
-                                        "You could forget things if the description was left blank! Try adding a message!" +
+                                        "You may forget things if the description was left blank! Try adding a message!" +
                                         NL + DIVIDER + NL
                         );
                         repeat = true;
