@@ -52,7 +52,8 @@ public class Main {
                     list[count] = new Todo(msg.substring(index));
                 } else if (msg.startsWith("deadline ")) {
                     index = 9;
-                    list[count] = new Deadline(msg.substring(index), "");
+                    int indexDdl = msg.indexOf("ddl:");
+                    list[count] = new Deadline(msg.substring(index, indexDdl), msg.substring(indexDdl + 5));
                 } else if (msg.startsWith("event ")) {
                     index = 6;
                     list[count] = new Event(msg.substring(index), "", "");
