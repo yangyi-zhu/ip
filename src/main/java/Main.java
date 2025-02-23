@@ -17,6 +17,7 @@ public class Main {
                     System.out.println((i + 1) + ". " + list[i]);
                 }
                 System.out.println(DIVIDER + NL);
+                return;
             } else if (msg.startsWith("mark ")) {
                 int index = Integer.parseInt(msg.substring(5));
                 list[index - 1].mark();
@@ -71,6 +72,8 @@ public class Main {
                                     "event Josh's birthday party from: 03-03-25 15:00 to: 04-03-25 00:00" +
                                     NL + DIVIDER + NL
                     );
+                    Scanner msg2 = new Scanner(System.in);
+                    msg = msg2.nextLine();
                 }
             }
         } while (repeat);
