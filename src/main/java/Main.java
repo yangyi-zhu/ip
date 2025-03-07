@@ -7,6 +7,26 @@ public class Main {
     private static int count = 0;
     private static final Task[] list = new Task[100];
 
+    public static boolean deleteTask(int index) {
+        if (index < 1 || index > count) {
+            return false;
+        }
+
+        for (int i = index - 1; i < count - 2; i++) {
+            list[i] = list[i + 1];
+        }
+        count--;
+        return true;
+    }
+
+    public static void checkDeleteStatus(boolean status) {
+        if (!status) {
+            //printErrorDelete();
+        }
+
+        //printSuccessDelete();
+    }
+
     public static void checkInput(String msg) {
         boolean repeat;
         do {
@@ -18,6 +38,9 @@ public class Main {
                 }
                 System.out.println(DIVIDER + NL);
                 return;
+            } else if (msg.startsWith("delete ")) {
+                int index = Integer.parseInt(msg.substring(7));
+                checkDeleteStatus(deleteTask(index));
             } else if (msg.startsWith("mark ")) {
                 int index = Integer.parseInt(msg.substring(5));
                 list[index - 1].mark();
