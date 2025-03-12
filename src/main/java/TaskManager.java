@@ -1,33 +1,31 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
 import datatypes.Deadline;
 import datatypes.Event;
 import datatypes.Task;
 import datatypes.Todo;
 
-import java.util.Scanner;
-
 public class TaskManager {
-    private static int count = 0;
-    private static final Task[] list = new Task[100];
+    private static final ArrayList<Task> list = new ArrayList<Task>();
 
     public static void printList() {
         System.out.println(Constants.NEW_LINE + Constants.DIVIDER + Constants.NEW_LINE + "Tasks:");
-        for (int i = 0; i < count; i++) {
-            System.out.println((i + 1) + ". " + list[i]);
+        for (int i = 0; i < list.size(); i++) {
+            System.out.println((i + 1) + ". " + list.get(i));
         }
         System.out.println(Constants.DIVIDER + Constants.NEW_LINE);
     }
 
     public static void deleteTask(int index) {
-        if (index < 1 || index > count) {
+        if (index < 1 || index > list.size()) {
             System.out.println(Constants.WARN_DELETE_FAILED);
             return;
         }
 
-        String task = list[index].toString();
-        for (int i = index - 1; i < count - 2; i++) {
-            list[i] = list[i + 1];
-        }
-        count--;
+        String task = list.get(index).toString();
+        list.remove(index);
+
         System.out.println(Constants.NEW_LINE + Constants.DIVIDER + Constants.NEW_LINE +
                 Constants.STATUS_DELETE + Constants.NEW_LINE + "  " + task +
                 Constants.NEW_LINE + Constants.DIVIDER + Constants.NEW_LINE
@@ -36,14 +34,14 @@ public class TaskManager {
 
     public static void toggleMarkTask(int index, boolean isMarked) {
         if (isMarked) {
-            list[index].mark();
+            list.get(index).mark();
         } else {
-            list[index].unmark();
+            list.get(index).unmark();
         }
 
         System.out.println(Constants.NEW_LINE + Constants.DIVIDER + Constants.NEW_LINE +
                         (isMarked ? Constants.STATUS_MARK : Constants.STATUS_UNMARK) +
-                        Constants.NEW_LINE + "  " + list[index] + Constants.NEW_LINE +
+                        Constants.NEW_LINE + "  " + list.get(index) + Constants.NEW_LINE +
                         Constants.DIVIDER + Constants.NEW_LINE
         );
     }
@@ -71,15 +69,15 @@ public class TaskManager {
                 index = Constants.INDEX_TODO;
                 if (!checkEmptyDescription(message.substring(index))) {
                     isAddSuccess = true;
-                    list[count] = new Todo(message.substring(index));
+                    list.add(new Todo(message.substring(index)));
                 }
             } else if (message.startsWith("deadline ")) {
                 index = Constants.INDEX_DEADLINE;
                 int indexDdl = message.indexOf("ddl:");
-                list[count] = new Deadline(message.substring(index, indexDdl), message.substring(indexDdl + 5));
+                list.add(new Deadline(message.substring(index, indexDdl), message.substring(indexDdl + 5)));
             } else if (message.startsWith("event ")) {
                 index = Constants.INDEX_EVENT;
-                list[count] = new Event(message.substring(index), "", "");
+                list.add(new Event(message.substring(index), "", ""));
             } else {
                 System.out.println(Constants.WARN_ADD_FAILED);
                 return;
@@ -93,11 +91,10 @@ public class TaskManager {
         System.out.println(
                 Constants.NEW_LINE + Constants.DIVIDER + Constants.NEW_LINE +
                         "The following task has been added:" +
-                        Constants.NEW_LINE + "  " + list[count] + Constants.NEW_LINE +
-                        "You now have " + (count + 1) + " tasks in the list." +
+                        Constants.NEW_LINE + "  " + list.get(list.size() - 1) + Constants.NEW_LINE +
+                        "You now have " + (list.size()) + " tasks in the list." +
                         Constants.NEW_LINE + Constants.DIVIDER + Constants.NEW_LINE
         );
-        count++;
     }
 
     public static void checkInput(String message) {
