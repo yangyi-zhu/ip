@@ -1,3 +1,8 @@
+import datatypes.Deadline;
+import datatypes.Event;
+import datatypes.Task;
+import datatypes.Todo;
+
 import java.util.Scanner;
 
 public class TaskManager {
@@ -114,6 +119,7 @@ public class TaskManager {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        Baguette.printLogo();
         System.out.println(Constants.WELCOME);
         while (true) {
             String input = scanner.nextLine();

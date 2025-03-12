@@ -1,10 +1,16 @@
 public class Baguette {
-    public static void main(String[] args) {
-        String logo = " ____        _        \n"
-                + "|  _ \\ _   _| | _____ \n"
-                + "| | | | | | | |/ / _ \\\n"
-                + "| |_| | |_| |   <  __/\n"
-                + "|____/ \\__,_|_|\\_\\___|\n";
-        System.out.println("Hello from\n" + logo);
+    public static void printLogo() {
+        System.out.println(Constants.DIVIDER + Constants.DIVIDER + Constants.DIVIDER + Constants.NEW_LINE +
+                "   _______  _______  _______  __   __  _______  _______  _______  _______" + Constants.NEW_LINE +
+                "  |  _    ||   _   ||       ||  | |  ||       ||       ||       ||       |" + Constants.NEW_LINE +
+                "  | |_|   ||  |_|  ||    ___||  | |  ||    ___||_     _||_     _||    ___|" + Constants.NEW_LINE +
+                "  |       ||       ||   | __ |  |_|  ||   |___   |   |    |   |  |   |___" + Constants.NEW_LINE +
+                "  |  _   | |       ||   ||  ||       ||    ___|  |   |    |   |  |    ___|" + Constants.NEW_LINE +
+                "  | |_|   ||   _   ||   |_| ||       ||   |___   |   |    |   |  |   |___" + Constants.NEW_LINE +
+                "  |_______||__| |__||_______||_______||_______|  |___|    |___|  |_______|" + Constants.NEW_LINE +
+                Constants.DIVIDER + Constants.DIVIDER + Constants.DIVIDER + Constants.NEW_LINE
+        );
     }
+
+    private Baguette() {}
 }
