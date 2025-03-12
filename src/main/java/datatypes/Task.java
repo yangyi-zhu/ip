@@ -1,10 +1,12 @@
+package datatypes;
+
 public abstract class Task {
     protected String desc;
     protected boolean isDone;
 
     // Type 0: To-do (default)
-    // Type 1: Deadline
-    // Type 2: Event
+    // Type 1: datatypes.Deadline
+    // Type 2: datatypes.Event
     private int type;
 
     public Task(String description) {
