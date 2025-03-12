@@ -5,11 +5,11 @@ public class TaskManager {
     private static final Task[] list = new Task[100];
 
     public static void printList() {
-        System.out.println(Messages.NEW_LINE + Messages.DIVIDER + Messages.NEW_LINE + "Tasks:");
+        System.out.println(Constants.NEW_LINE + Constants.DIVIDER + Constants.NEW_LINE + "Tasks:");
         for (int i = 0; i < count; i++) {
             System.out.println((i + 1) + ". " + list[i]);
         }
-        System.out.println(Messages.DIVIDER + Messages.NEW_LINE);
+        System.out.println(Constants.DIVIDER + Constants.NEW_LINE);
     }
 
     public static boolean deleteTask(int index) {
@@ -39,19 +39,19 @@ public class TaskManager {
             list[index].unmark();
         }
 
-        System.out.println(Messages.NEW_LINE + Messages.DIVIDER + Messages.NEW_LINE +
-                        (isMarked ? Messages.STATUS_MARK : Messages.STATUS_UNMARK) +
-                        Messages.NEW_LINE + "  " + list[index] + Messages.NEW_LINE +
-                        Messages.DIVIDER + Messages.NEW_LINE
+        System.out.println(Constants.NEW_LINE + Constants.DIVIDER + Constants.NEW_LINE +
+                        (isMarked ? Constants.STATUS_MARK : Constants.STATUS_UNMARK) +
+                        Constants.NEW_LINE + "  " + list[index] + Constants.NEW_LINE +
+                        Constants.DIVIDER + Constants.NEW_LINE
         );
     }
 
     public static boolean checkEmptyDescription(String description) {
         if (description.isBlank()) {
             System.out.println(
-                    Messages.NEW_LINE + Messages.DIVIDER + Messages.NEW_LINE +
-                            Messages.WARN_BLANK_DESCRIPTION +
-                            Messages.NEW_LINE + Messages.DIVIDER + Messages.NEW_LINE
+                    Constants.NEW_LINE + Constants.DIVIDER + Constants.NEW_LINE +
+                            Constants.WARN_BLANK_DESCRIPTION +
+                            Constants.NEW_LINE + Constants.DIVIDER + Constants.NEW_LINE
             );
             return true;
         }
@@ -66,20 +66,20 @@ public class TaskManager {
 
         while (!isAddSuccess) {
             if (message.startsWith("todo ")) {
-                index = 5;
+                index = Constants.INDEX_TODO;
                 if (!checkEmptyDescription(message.substring(index))) {
                     isAddSuccess = true;
                     list[count] = new Todo(message.substring(index));
                 }
             } else if (message.startsWith("deadline ")) {
-                index = 9;
+                index = Constants.INDEX_DEADLINE;
                 int indexDdl = message.indexOf("ddl:");
                 list[count] = new Deadline(message.substring(index, indexDdl), message.substring(indexDdl + 5));
             } else if (message.startsWith("event ")) {
-                index = 6;
+                index = Constants.INDEX_EVENT;
                 list[count] = new Event(message.substring(index), "", "");
             } else {
-                System.out.println(Messages.WARN_ADD_FAILED);
+                System.out.println(Constants.WARN_ADD_FAILED);
                 return;
             }
 
@@ -89,11 +89,11 @@ public class TaskManager {
         }
 
         System.out.println(
-                Messages.NEW_LINE + Messages.DIVIDER + Messages.NEW_LINE +
+                Constants.NEW_LINE + Constants.DIVIDER + Constants.NEW_LINE +
                         "The following task has been added:" +
-                        Messages.NEW_LINE + "  " + list[count] + Messages.NEW_LINE +
+                        Constants.NEW_LINE + "  " + list[count] + Constants.NEW_LINE +
                         "You now have " + (count + 1) + " tasks in the list." +
-                        Messages.NEW_LINE + Messages.DIVIDER + Messages.NEW_LINE
+                        Constants.NEW_LINE + Constants.DIVIDER + Constants.NEW_LINE
         );
         count++;
     }
@@ -117,11 +117,11 @@ public class TaskManager {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println(Messages.WELCOME);
+        System.out.println(Constants.WELCOME);
         while (true) {
             String input = scanner.nextLine();
             if (input.equals("bye")) {
-                System.out.println(Messages.GOODBYE);
+                System.out.println(Constants.GOODBYE);
                 return;
             }
             checkInput(input);

@@ -1,4 +1,4 @@
-public final class Messages {
+public final class Constants {
     public static final String DIVIDER = "--------------------------";
     public static final String NEW_LINE = System.lineSeparator();
 
@@ -25,5 +25,9 @@ public final class Messages {
     public static final String GOODBYE = NEW_LINE + DIVIDER + NEW_LINE +
             "Have a nice day!" + NEW_LINE + DIVIDER;
 
-    private Messages() {}
+    public static int INDEX_TODO = 5;
+    public static int INDEX_DEADLINE = 9;
+    public static int INDEX_EVENT = 6;
+
+    private Constants() {}
 }
