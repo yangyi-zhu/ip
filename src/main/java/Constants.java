@@ -4,6 +4,7 @@ public final class Constants {
 
     public static final String STATUS_MARK = "Congratulations! The following task has been marked as complete:";
     public static final String STATUS_UNMARK = "Got it! The following task has been marked as incomplete:";
+    public static final String STATUS_DELETE = "Got it! The following task has been deleted:";
 
     public static final String WARN_BLANK_DESCRIPTION = "You may forget things if the description was left blank! Try adding a message!";
     public static final String WARN_ADD_FAILED = NEW_LINE + DIVIDER + NEW_LINE +
@@ -15,6 +16,12 @@ public final class Constants {
             "todo Do the laundry" + NEW_LINE +
             "deadline CS2113 Increment L5 ddl: 14-02-25 16:00" + NEW_LINE +
             "event Josh's birthday party from: 03-03-25 15:00 to: 04-03-25 00:00" +
+            NEW_LINE + DIVIDER + NEW_LINE +
+            "Other commands: list | mark | unmark | delete [index]" +
+            NEW_LINE + DIVIDER + NEW_LINE;;
+    public static final String WARN_DELETE_FAILED = NEW_LINE + DIVIDER + NEW_LINE +
+            "Failed to delete task, try again with a valid index within your task count!" +
+            NEW_LINE + "Run \"list\" to see your current list of tasks." +
             NEW_LINE + DIVIDER + NEW_LINE;
 
     public static final String WELCOME = DIVIDER + NEW_LINE +

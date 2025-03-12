@@ -12,24 +12,21 @@ public class TaskManager {
         System.out.println(Constants.DIVIDER + Constants.NEW_LINE);
     }
 
-    public static boolean deleteTask(int index) {
+    public static void deleteTask(int index) {
         if (index < 1 || index > count) {
-            return false;
+            System.out.println(Constants.WARN_DELETE_FAILED);
+            return;
         }
 
+        String task = list[index].toString();
         for (int i = index - 1; i < count - 2; i++) {
             list[i] = list[i + 1];
         }
         count--;
-        return true;
-    }
-
-    public static void checkDeleteStatus(boolean status) {
-        if (!status) {
-            //printErrorDelete();
-        }
-
-        //printSuccessDelete();
+        System.out.println(Constants.NEW_LINE + Constants.DIVIDER + Constants.NEW_LINE +
+                Constants.STATUS_DELETE + Constants.NEW_LINE + "  " + task +
+                Constants.NEW_LINE + Constants.DIVIDER + Constants.NEW_LINE
+        );
     }
 
     public static void toggleMarkTask(int index, boolean isMarked) {
@@ -103,7 +100,7 @@ public class TaskManager {
             printList();
         } else if (message.startsWith("delete ")) {
             int index = Integer.parseInt(message.substring(7));
-            checkDeleteStatus(deleteTask(index));
+            deleteTask(index);
         } else if (message.startsWith("mark ")) {
             int index = Integer.parseInt(message.substring(5));
             toggleMarkTask(index - 1, true);
