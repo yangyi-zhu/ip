@@ -1,4 +1,4 @@
-package datatypes;
+package Baguette.datatypes;
 
 public class Event extends Task {
     protected String from;
@@ -8,6 +8,14 @@ public class Event extends Task {
         super(description);
         this.from = from;
         this.to = to;
+    }
+
+    public String getFrom() {
+        return from;
+    }
+
+    public String getTo() {
+        return to;
     }
 
     public String getType() {
