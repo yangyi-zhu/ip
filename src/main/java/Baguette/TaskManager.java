@@ -1,13 +1,15 @@
 package Baguette;
 
-import Baguette.datatypes.*;
+import Baguette.datatypes.Task;
+import Baguette.datatypes.Todo;
+import Baguette.datatypes.Deadline;
+import Baguette.datatypes.Event;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class TaskManager {
     private static final ArrayList<Task> tasks = new ArrayList<Task>();
-    private static final String filePath = "./data/tasks.txt";
 
     public static void printList() {
         System.out.println(Constants.NEW_LINE + Constants.DIVIDER + Constants.NEW_LINE + "Tasks:");
@@ -74,71 +76,106 @@ public class TaskManager {
     public static void addTask(String message) {
         int index;
         boolean isAddSuccess = false;
-        Scanner scanner = new Scanner(System.in);
 
-        while (!isAddSuccess) {
-            if (message.startsWith("todo ")) {
-                index = Constants.INDEX_TODO;
-                if (!checkEmptyDescription(message.substring(index))) {
-                    isAddSuccess = true;
-                    tasks.add(new Todo(message.substring(index)));
+        if (message.startsWith("todo ")) {
+            index = Constants.INDEX_TODO;
+            try {
+                if (message.substring(index).isBlank()) {
+                    throw new BaguetteException(Constants.WARN_BLANK_DESCRIPTION);
                 }
-            } else if (message.startsWith("deadline ")) {
-                index = Constants.INDEX_DEADLINE;
-                int indexDdl = message.indexOf("ddl: ");
+                tasks.add(new Todo(message.substring(index).trim()));
                 isAddSuccess = true;
-                tasks.add(new Deadline(message.substring(index, indexDdl), message.substring(indexDdl + 5)));
-            } else if (message.startsWith("event ")) {
-                index = Constants.INDEX_EVENT;
+            } catch (BaguetteException e) {
+                System.out.println(e);
+            }
+        } else if (message.startsWith("deadline ")) {
+            index = Constants.INDEX_DEADLINE;
+            int indexDdl = message.indexOf("ddl: ");
+
+            try {
+                if (indexDdl == -1) {
+                    throw new BaguetteException(Constants.WARN_MISSING_DEADLINE);
+                }
+
+                String description = message.substring(index, indexDdl).trim();
+                String deadline = message.substring(indexDdl + 5).trim();
+
+                if (description.isEmpty() || deadline.isEmpty()) {
+                    throw new BaguetteException(Constants.WARN_FIELD_EMPTY);
+                }
+
+                tasks.add(new Deadline(description, deadline));
                 isAddSuccess = true;
-                tasks.add(new Event(message.substring(index), " ", " "));
-            } else {
-                System.out.println(Constants.WARN_ADD_FAILED);
-                return;
+            } catch (BaguetteException e) {
+                System.out.println(e);
             }
+        } else if (message.startsWith("event ")) {
+            index = Constants.INDEX_EVENT;
+            int indexFrom = message.indexOf("from: ");
+            int indexTo = message.indexOf("to: ");
 
-            if (!isAddSuccess) {
-                message = scanner.nextLine();
+            try {
+                if (indexFrom == -1 || indexTo == -1 || indexFrom >= indexTo) {
+                    throw new BaguetteException(Constants.WARN_MISSING_EVENT);
+                }
+
+                String description = message.substring(index, indexFrom).trim();
+                String from = message.substring(indexFrom + 6, indexTo).trim();
+                String to = message.substring(indexTo + 4).trim();
+
+                if (description.isEmpty() || from.isEmpty() || to.isEmpty()) {
+                    throw new BaguetteException(Constants.WARN_FIELD_EMPTY);
+                }
+
+                tasks.add(new Event(description, from, to));
+                isAddSuccess = true;
+            } catch (BaguetteException e) {
+                System.out.println(e);
             }
+        } else {
+            System.out.println(Constants.WARN_ADD_FAILED);
+            return;
+        }
 
+        if (isAddSuccess) {
             try {
                 Storage.updateFile(tasks);
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
-        }
 
-        System.out.println(
-                Constants.NEW_LINE + Constants.DIVIDER + Constants.NEW_LINE +
-                        "The following task has been added:" +
-                        Constants.NEW_LINE + "  " + tasks.get(tasks.size() - 1) + Constants.NEW_LINE +
-                        "You now have " + (tasks.size()) + " tasks in the tasks." +
-                        Constants.NEW_LINE + Constants.DIVIDER + Constants.NEW_LINE
-        );
+            System.out.println(
+                    Constants.NEW_LINE + Constants.DIVIDER + Constants.NEW_LINE +
+                            "The following task has been added:" +
+                            Constants.NEW_LINE + "  " + tasks.get(tasks.size() - 1) + Constants.NEW_LINE +
+                            "You now have " + (tasks.size()) + " tasks in the tasks." +
+                            Constants.NEW_LINE + Constants.DIVIDER + Constants.NEW_LINE
+            );
+        }
     }
 
     public static void checkInput(String message) {
-        if (message.equals("list")) {
-            printList();
-        } else if (message.startsWith("delete ")) {
+        try {
             try {
-                try {
+                if (message.startsWith("list")) {
+                    printList();
+                } else if (message.startsWith("delete ")) {
                     int index = Integer.parseInt(message.substring(7));
                     deleteTask(index - 1);
-                } catch (NumberFormatException e) {
-                    throw new BaguetteException("OI OI OI! Integer, my friend!");
+                } else if (message.startsWith("mark ")) {
+                    int index = Integer.parseInt(message.substring(5));
+                    toggleMarkTask(index - 1, true);
+                } else if (message.startsWith("unmark ")) {
+                    int index = Integer.parseInt(message.substring(7));
+                    toggleMarkTask(index - 1, false);
+                } else {
+                    addTask(message);
                 }
-            } catch (BaguetteException e) {
-                System.out.println(e);
+            } catch (NumberFormatException e) {
+                throw new BaguetteException(Constants.WARN_INT);
             }
-        } else if (message.startsWith("mark ")) {
-            int index = Integer.parseInt(message.substring(5));
-            toggleMarkTask(index - 1, true);
-        } else if (message.startsWith("unmark ")) {
-            int index = Integer.parseInt(message.substring(7));
-            toggleMarkTask(index - 1, false);
-        } else {
-            addTask(message);
+        } catch (BaguetteException e) {
+            System.out.println(e);
         }
     }
 

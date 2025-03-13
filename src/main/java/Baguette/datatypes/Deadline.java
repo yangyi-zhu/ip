@@ -18,6 +18,6 @@ public class Deadline extends Task {
 
     @Override
     public String toString() {
-        return super.toString() + "(due by: " + ddl + ")";
+        return super.toString() + " (due by: " + ddl + ")";
     }
 }

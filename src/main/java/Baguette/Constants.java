@@ -25,6 +25,10 @@ public final class Constants {
             "Failed to delete task, try again with a valid index within your task count!" +
             NEW_LINE + "Run \"list\" to see your current list of tasks." +
             NEW_LINE + DIVIDER + NEW_LINE;
+    public static final String WARN_MISSING_DEADLINE = "Hon hon hon, looks like you forgot what this type is for";
+    public static final String WARN_MISSING_EVENT = "Hola amigo! Make sure you follow the correct format!";
+    public static final String WARN_FIELD_EMPTY = "Make sure you fill all fields!!! :P";
+    public static final String WARN_INT = "OI OI OI! Integer, my friend!";
 
     public static final String WELCOME = DIVIDER + NEW_LINE +
             "Bonjour et bievenue! Vous pouvez m'appeler Baguette.Baguette!" +
@@ -39,7 +43,7 @@ public final class Constants {
     public static int INDEX_EVENT = 6;
 
     public static int STORAGE_TIME_WIDTH = 3;
-    public static int STORAGE_PREFIX_WIDTH = 5;
+    public static int STORAGE_PREFIX_WIDTH = 4;
 
     public static String PREFIX_D = "*$#";
     public static String PREFIX_E_F = ":=;";

@@ -1,8 +1,10 @@
 package Baguette;
 
-import Baguette.datatypes.*;
+import Baguette.datatypes.Task;
+import Baguette.datatypes.Todo;
+import Baguette.datatypes.Deadline;
+import Baguette.datatypes.Event;
 
-import javax.print.DocFlavor;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -17,19 +19,19 @@ public class Storage {
         Task task;
         switch (line.substring(0, 1)) {
         case "T":
-            task = new Todo(line.substring(Constants.STORAGE_PREFIX_WIDTH));
+            task = new Todo(line.substring(Constants.STORAGE_PREFIX_WIDTH).trim());
             break;
         case "D":
             int ddlIndex = line.indexOf(Constants.PREFIX_D);
-            task = new Deadline(line.substring(Constants.STORAGE_PREFIX_WIDTH, ddlIndex), 
-                    line.substring(ddlIndex + Constants.STORAGE_TIME_WIDTH));
+            task = new Deadline(line.substring(Constants.STORAGE_PREFIX_WIDTH, ddlIndex).trim(),
+                    line.substring(ddlIndex + Constants.STORAGE_TIME_WIDTH).trim());
             break;
         case "E":
             int fromIndex = line.indexOf(Constants.PREFIX_E_F) + 1;
             int toIndex = line.indexOf(Constants.PREFIX_E_T) + 1;
-            task = new Event(line.substring(Constants.STORAGE_PREFIX_WIDTH),
-                    line.substring(fromIndex + Constants.STORAGE_TIME_WIDTH, toIndex), 
-                    line.substring(toIndex + Constants.STORAGE_TIME_WIDTH)
+            task = new Event(line.substring(Constants.STORAGE_PREFIX_WIDTH).trim(),
+                    line.substring(fromIndex + Constants.STORAGE_TIME_WIDTH, toIndex).trim(),
+                    line.substring(toIndex + Constants.STORAGE_TIME_WIDTH).trim()
             );
             break;
         default:
