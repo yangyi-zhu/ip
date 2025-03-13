@@ -121,8 +121,16 @@ public class TaskManager {
         if (message.equals("list")) {
             printList();
         } else if (message.startsWith("delete ")) {
-            int index = Integer.parseInt(message.substring(7));
-            deleteTask(index - 1);
+            try {
+                try {
+                    int index = Integer.parseInt(message.substring(7));
+                    deleteTask(index - 1);
+                } catch (NumberFormatException e) {
+                    throw new BaguetteException("OI OI OI! Integer, my friend!");
+                }
+            } catch (BaguetteException e) {
+                System.out.println(e);
+            }
         } else if (message.startsWith("mark ")) {
             int index = Integer.parseInt(message.substring(5));
             toggleMarkTask(index - 1, true);

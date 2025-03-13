@@ -1,7 +1,7 @@
 package Baguette;
 
-public class BaguetteExceptioin extends Exception {
-    public KoyaException(String message) {
+public class BaguetteException extends Exception {
+    public BaguetteException(String message) {
         super(message);
     }
 }
