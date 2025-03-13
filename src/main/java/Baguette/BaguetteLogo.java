@@ -1,4 +1,6 @@
-public class Baguette {
+package Baguette;
+
+public class BaguetteLogo {
     public static void printLogo() {
         System.out.println(Constants.DIVIDER + Constants.DIVIDER + Constants.DIVIDER + Constants.NEW_LINE +
                 "   _______  _______  _______  __   __  _______  _______  _______  _______" + Constants.NEW_LINE +
@@ -12,5 +14,5 @@ public class Baguette {
         );
     }
 
-    private Baguette() {}
+    private BaguetteLogo() {}
 }

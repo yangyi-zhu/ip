@@ -1,4 +1,4 @@
-package datatypes;
+package Baguette.datatypes;
 
 public class Deadline extends Task {
     protected String ddl;
@@ -10,6 +10,10 @@ public class Deadline extends Task {
 
     public String getType() {
         return "[D]";
+    }
+
+    public String getDdl() {
+        return ddl;
     }
 
     @Override

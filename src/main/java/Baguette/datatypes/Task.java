@@ -1,12 +1,12 @@
-package datatypes;
+package Baguette.datatypes;
 
 public abstract class Task {
     protected String desc;
     protected boolean isDone;
 
     // Type 0: To-do (default)
-    // Type 1: datatypes.Deadline
-    // Type 2: datatypes.Event
+    // Type 1: Baguette.datatypes.Deadline
+    // Type 2: Baguette.datatypes.Event
     private int type;
 
     public Task(String description) {
@@ -21,6 +21,14 @@ public abstract class Task {
 
     public void unmark() {
         this.isDone = false;
+    }
+
+    public boolean getIsDone() {
+        return isDone;
+    }
+
+    public String getDesc() {
+        return desc;
     }
 
     public abstract String getType();

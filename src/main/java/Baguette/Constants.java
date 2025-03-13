@@ -1,3 +1,5 @@
+package Baguette;
+
 public final class Constants {
     public static final String DIVIDER = "--------------------------";
     public static final String NEW_LINE = System.lineSeparator();
@@ -25,7 +27,7 @@ public final class Constants {
             NEW_LINE + DIVIDER + NEW_LINE;
 
     public static final String WELCOME = DIVIDER + NEW_LINE +
-            "Bonjour et bievenue! Vous pouvez m'appeler Baguette!" +
+            "Bonjour et bievenue! Vous pouvez m'appeler Baguette.Baguette!" +
             NEW_LINE + "What do you think about my intro? :D" + NEW_LINE +
             "Anyhow, what are we thinking today?" +
             NEW_LINE + DIVIDER + NEW_LINE;
@@ -35,6 +37,13 @@ public final class Constants {
     public static int INDEX_TODO = 5;
     public static int INDEX_DEADLINE = 9;
     public static int INDEX_EVENT = 6;
+
+    public static int STORAGE_TIME_WIDTH = 3;
+    public static int STORAGE_PREFIX_WIDTH = 5;
+
+    public static String PREFIX_D = "*$#";
+    public static String PREFIX_E_F = ":=;";
+    public static String PREFIX_E_T = "+-+";
 
     private Constants() {}
 }
