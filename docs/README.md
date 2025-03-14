@@ -1,4 +1,4 @@
-# Baguette.Baguette User Guide
+# baguette.baguette User Guide
 
 // Update the title above to match the actual product name
 

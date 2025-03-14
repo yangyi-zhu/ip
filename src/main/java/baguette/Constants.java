@@ -1,8 +1,18 @@
-package Baguette;
+package baguette;
 
 public final class Constants {
     public static final String DIVIDER = "--------------------------";
     public static final String NEW_LINE = System.lineSeparator();
+
+    public static final String baguetteLogo = Constants.DIVIDER + Constants.DIVIDER + Constants.DIVIDER + Constants.NEW_LINE +
+            "   _______  _______  _______  __   __  _______  _______  _______  _______" + Constants.NEW_LINE +
+            "  |  _    ||   _   ||       ||  | |  ||       ||       ||       ||       |" + Constants.NEW_LINE +
+            "  | |_|   ||  |_|  ||    ___||  | |  ||    ___||_     _||_     _||    ___|" + Constants.NEW_LINE +
+            "  |       ||       ||   | __ |  |_|  ||   |___   |   |    |   |  |   |___" + Constants.NEW_LINE +
+            "  |  _   | |       ||   ||  ||       ||    ___|  |   |    |   |  |    ___|" + Constants.NEW_LINE +
+            "  | |_|   ||   _   ||   |_| ||       ||   |___   |   |    |   |  |   |___" + Constants.NEW_LINE +
+            "  |_______||__| |__||_______||_______||_______|  |___|    |___|  |_______|" + Constants.NEW_LINE +
+            Constants.DIVIDER + Constants.DIVIDER + Constants.DIVIDER + Constants.NEW_LINE;
 
     public static final String STATUS_MARK = "Congratulations! The following task has been marked as complete:";
     public static final String STATUS_UNMARK = "Got it! The following task has been marked as incomplete:";
@@ -19,7 +29,7 @@ public final class Constants {
             "deadline CS2113 Increment L5 ddl: 14-02-25 16:00" + NEW_LINE +
             "event Josh's birthday party from: 03-03-25 15:00 to: 04-03-25 00:00" +
             NEW_LINE + DIVIDER + NEW_LINE +
-            "Other commands: list | mark | unmark | delete [index]" +
+            "Other commands: list | mark | unmark | delete [index] | bye" +
             NEW_LINE + DIVIDER + NEW_LINE;;
     public static final String WARN_DELETE_FAILED = NEW_LINE + DIVIDER + NEW_LINE +
             "Failed to delete task, try again with a valid index within your task count!" +
@@ -29,9 +39,11 @@ public final class Constants {
     public static final String WARN_MISSING_EVENT = "Hola amigo! Make sure you follow the correct format!";
     public static final String WARN_FIELD_EMPTY = "Make sure you fill all fields!!! :P";
     public static final String WARN_INT = "OI OI OI! Integer, my friend!";
+    public static final String WARN_LOADING_ERROR = "Oh no, we ran into an unexpected error!" +
+            NEW_LINE + "Try relaunching the program!";
 
     public static final String WELCOME = DIVIDER + NEW_LINE +
-            "Bonjour et bievenue! Vous pouvez m'appeler Baguette.Baguette!" +
+            "Bonjour et bievenue! Vous pouvez m'appeler Baguette!" +
             NEW_LINE + "What do you think about my intro? :D" + NEW_LINE +
             "Anyhow, what are we thinking today?" +
             NEW_LINE + DIVIDER + NEW_LINE;

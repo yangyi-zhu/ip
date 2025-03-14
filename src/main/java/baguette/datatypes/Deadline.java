@@ -1,4 +1,4 @@
-package Baguette.datatypes;
+package baguette.datatypes;
 
 public class Deadline extends Task {
     protected String ddl;

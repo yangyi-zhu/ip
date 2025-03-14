@@ -1,4 +1,4 @@
-package Baguette.datatypes;
+package baguette.datatypes;
 
 public abstract class Task {
     protected String desc;

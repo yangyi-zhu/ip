@@ -1,9 +1,9 @@
-package Baguette;
+package baguette;
 
-import Baguette.datatypes.Task;
-import Baguette.datatypes.Todo;
-import Baguette.datatypes.Deadline;
-import Baguette.datatypes.Event;
+import baguette.datatypes.Task;
+import baguette.datatypes.Todo;
+import baguette.datatypes.Deadline;
+import baguette.datatypes.Event;
 
 import java.io.File;
 import java.io.FileWriter;

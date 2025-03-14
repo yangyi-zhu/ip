@@ -1,4 +1,4 @@
-package Baguette.datatypes;
+package baguette.datatypes;
 
 public class Todo extends Task {
     public Todo(String description) {
