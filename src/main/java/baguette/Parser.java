@@ -33,7 +33,7 @@ public class Parser {
     public static String parseTaskType(String message) {
         message = message.trim();
         int index = message.indexOf(" ");
-        return message.substring(0, index);
+        return (index == -1) ? "" : message.substring(0, index);
     }
 
     private Parser() {}
