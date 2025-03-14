@@ -1,21 +1,24 @@
 package baguette.datatypes;
 
+import baguette.Parser;
+import java.time.LocalDateTime;
+
 public class Event extends Task {
-    protected String from;
-    protected String to;
+    protected LocalDateTime from;
+    protected LocalDateTime to;
 
     public Event(String description, String from, String to) {
         super(description);
-        this.from = from;
-        this.to = to;
+        this.from = Parser.parseDateTime(from);
+        this.to = Parser.parseDateTime(to);
     }
 
     public String getFrom() {
-        return from;
+        return Parser.toStringDateTime(from);
     }
 
     public String getTo() {
-        return to;
+        return Parser.toStringDateTime(to);
     }
 
     public String getType() {
@@ -24,6 +27,6 @@ public class Event extends Task {
 
     @Override
     public String toString() {
-        return super.toString() + " (from: " + from + ", to: " + to + ")";
+        return super.toString() + " (from: " + getFrom() + ", to: " + getTo() + ")";
     }
 }

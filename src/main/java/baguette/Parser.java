@@ -1,4 +1,7 @@
 package baguette;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 
 public class Parser {
     public static void checkInput(String message) {
@@ -32,6 +35,27 @@ public class Parser {
         message = message.trim();
         int index = message.indexOf(" ");
         return (index == -1) ? "" : message.substring(0, index);
+    }
+
+    public static LocalDateTime parseDateTime(String message) {
+        LocalDateTime dateTime;
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+        try {
+            try {
+                dateTime = LocalDateTime.parse(message, formatter);
+            } catch (DateTimeParseException e) {
+                throw new BaguetteException(Constants.WARN_INVALID_DATE_FORMAT);
+            }
+        } catch (BaguetteException e) {
+            System.out.println(e);
+            dateTime = LocalDateTime.now();
+        }
+        return dateTime;
+    }
+
+    public static String toStringDateTime(LocalDateTime dateTime) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMM yyyy HH:mm");
+        return dateTime.format(formatter);
     }
 
     private Parser() {}
