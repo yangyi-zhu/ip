@@ -147,4 +147,16 @@ public class TaskList {
         ArrayList<Task> fileContent = Storage.generateList();
         tasks.addAll(fileContent);
     }
+
+    public static void find(String keyword) {
+        ArrayList<Task> list = new ArrayList<Task>();
+
+        for (Task task : tasks) {
+            if (task.getDesc().indexOf(keyword) != -1) {
+                list.add(task);
+            }
+        }
+
+        Ui.printSearchResults(list);
+    }
 }

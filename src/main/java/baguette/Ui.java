@@ -22,9 +22,9 @@ public class Ui {
     }
 
     public static void printDeleteSuccess(String task) {
-        System.out.println(Constants.NEW_LINE + Constants.DIVIDER + Constants.NEW_LINE +
-                Constants.STATUS_DELETE + Constants.NEW_LINE + "  " + task +
-                Constants.NEW_LINE + Constants.DIVIDER + Constants.NEW_LINE);
+        System.out.println(Constants.NEW_LINE + Constants.DIVIDER + Constants.NEW_LINE
+                + Constants.STATUS_DELETE + Constants.NEW_LINE + "  " + task
+                + Constants.NEW_LINE + Constants.DIVIDER + Constants.NEW_LINE);
     }
 
     public static void printDeleteFail() {
@@ -32,19 +32,18 @@ public class Ui {
     }
 
     public static void printMarkStatus(Task task, boolean isMarked) {
-        System.out.println(Constants.NEW_LINE + Constants.DIVIDER + Constants.NEW_LINE +
-                (isMarked ? Constants.STATUS_MARK : Constants.STATUS_UNMARK) +
-                Constants.NEW_LINE + "  " + task + Constants.NEW_LINE +
-                Constants.DIVIDER + Constants.NEW_LINE);
+        System.out.println(Constants.NEW_LINE + Constants.DIVIDER + Constants.NEW_LINE
+                + (isMarked ? Constants.STATUS_MARK : Constants.STATUS_UNMARK)
+                + Constants.NEW_LINE + "  " + task + Constants.NEW_LINE
+                + Constants.DIVIDER + Constants.NEW_LINE);
     }
 
     public static void printAddSuccess(Task task, int size) {
-        System.out.println(
-                Constants.NEW_LINE + Constants.DIVIDER + Constants.NEW_LINE +
-                        "The following task has been added:" +
-                        Constants.NEW_LINE + "  " + task + Constants.NEW_LINE +
-                        "You now have " + size + " tasks in the tasks." +
-                        Constants.NEW_LINE + Constants.DIVIDER + Constants.NEW_LINE);
+        System.out.println(Constants.NEW_LINE + Constants.DIVIDER + Constants.NEW_LINE
+                + "The following task has been added:"
+                + Constants.NEW_LINE + "  " + task + Constants.NEW_LINE
+                + "You now have " + size + " tasks in the tasks."
+                + Constants.NEW_LINE + Constants.DIVIDER + Constants.NEW_LINE);
     }
 
     public static void printAddFail() {
@@ -56,6 +55,20 @@ public class Ui {
         System.out.println(Constants.NEW_LINE + Constants.DIVIDER + Constants.NEW_LINE + "Tasks:");
         for (int i = 0; i < tasks.size(); i++) {
             System.out.println((i + 1) + ". " + tasks.get(i));
+        }
+        System.out.println(Constants.DIVIDER + Constants.NEW_LINE);
+    }
+
+    public static void printSearchResults(ArrayList<Task> list) {
+        System.out.println(Constants.NEW_LINE + Constants.DIVIDER);
+        if (list.size() == 0) {
+            System.out.println(Constants.STATUS_EMPTY_RESULTS);
+        } else {
+            System.out.println(list.size() + (list.size() == 1 ? " result" : " results")
+                    + Constants.STATUS_FOUND + Constants.NEW_LINE);
+            for (int i = 0; i < list.size(); i++) {
+                System.out.println((i + 1) + ". " + list.get(i));
+            }
         }
         System.out.println(Constants.DIVIDER + Constants.NEW_LINE);
     }
