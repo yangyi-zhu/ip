@@ -1,5 +1,8 @@
 package baguette;
 
+/**
+ * Stores constants, primarily strings, used in the Baguette application.
+ */
 public final class Constants {
     public static final String DIVIDER = "--------------------------";
     public static final String NEW_LINE = System.lineSeparator();
@@ -59,10 +62,10 @@ public final class Constants {
     public static int INDEX_EVENT = 6;
 
     public static int STORAGE_TIME_WIDTH = 3;
-    public static int STORAGE_PREFIX_WIDTH = 4;
+    public static int STORAGE_PREFIX_WIDTH = 3;
 
     public static String PREFIX_D = "*$#";
-    public static String PREFIX_E_F = ":=;";
+    public static String PREFIX_E_F = ":=&";
     public static String PREFIX_E_T = "+-+";
 
     private Constants() {}

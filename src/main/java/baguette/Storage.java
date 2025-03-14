@@ -11,10 +11,20 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * Handles file storage operations for saving and loading tasks locally.
+ */
 public class Storage {
     private static final String folderPath = "data";
     private static final String filePath = "./data/tasks.txt";
-    
+
+    /**
+     * Parses a task from a line of text retrieved from the stored file.
+     * Determines the task type (Todo, Deadline, or Event) and reconstructs the task.
+     *
+     * @param line A line of text from the stored file representing a task.
+     * @return A Task object parsed from the given line.
+     */
     public static Task parseTask(String line) {
         Task task;
         switch (line.substring(0, 1)) {
@@ -27,9 +37,10 @@ public class Storage {
                     line.substring(ddlIndex + Constants.STORAGE_TIME_WIDTH).trim());
             break;
         case "E":
-            int fromIndex = line.indexOf(Constants.PREFIX_E_F) + 1;
-            int toIndex = line.indexOf(Constants.PREFIX_E_T) + 1;
-            task = new Event(line.substring(Constants.STORAGE_PREFIX_WIDTH).trim(),
+            int fromIndex = line.indexOf(Constants.PREFIX_E_F);
+            int toIndex = line.indexOf(Constants.PREFIX_E_T);
+            System.out.println(line.substring(fromIndex + Constants.STORAGE_TIME_WIDTH, toIndex));
+            task = new Event(line.substring(Constants.STORAGE_PREFIX_WIDTH, fromIndex).trim(),
                     line.substring(fromIndex + Constants.STORAGE_TIME_WIDTH, toIndex).trim(),
                     line.substring(toIndex + Constants.STORAGE_TIME_WIDTH).trim()
             );
@@ -44,6 +55,12 @@ public class Storage {
         return task;
     }
 
+    /**
+     * Generates a list of tasks by reading from the storage file.
+     * Creates the local file and folder if they do not exist.
+     *
+     * @return An ArrayList containing the tasks retrieved from the stored file.
+     */
     public static ArrayList<Task> generateList() {
         File folder = new File(folderPath);
         File file  = new File(filePath);
@@ -70,6 +87,13 @@ public class Storage {
         return list;
     }
 
+    /**
+     * Updates the stored file with the current list of tasks.
+     * Overwrites the existing file with the updated task list.
+     *
+     * @param tasks The list of tasks to be saved in the storage file.
+     * @throws IOException If an error occurs while writing to the file.
+     */
     public static void updateFile(ArrayList<Task> tasks) throws IOException {
         FileWriter fw = new FileWriter(filePath);
         for (Task task : tasks) {
@@ -78,6 +102,13 @@ public class Storage {
         fw.close();
     }
 
+    /**
+     * Converts a Task object into a string format suitable for storage in a file.
+     * Formats Todo, Deadline, and Event tasks accordingly.
+     *
+     * @param task The Task object to be converted.
+     * @return A formatted string representation of the task for file storage.
+     */
     public static String convertTaskToFile(Task task) {
         switch (task.getType()) {
         case "[T]":
