@@ -1,9 +1,5 @@
 package baguette;
 
-import baguette.datatypes.Deadline;
-import baguette.datatypes.Event;
-import baguette.datatypes.Todo;
-
 public class Parser {
     public static void checkInput(String message) {
         try {
@@ -19,6 +15,8 @@ public class Parser {
                 } else if (message.startsWith("unmark ")) {
                     int index = Integer.parseInt(message.substring(7));
                     TaskList.toggleMarkTask(index - 1, false);
+                } else if (message.startsWith("find ")) {
+                    TaskList.find(message.substring(5).trim());
                 } else {
                     TaskList.addTask(message);
                 }
