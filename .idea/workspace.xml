@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="ip:jar2" />
+    </artifacts-to-build>
+  </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="f64fb04f-80c3-4691-a61a-71840e314429" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/tasks.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/tasks.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/baguette/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/baguette/Constants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/baguette/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/baguette/Parser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/baguette/Storage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/baguette/Storage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/baguette/TaskList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/baguette/TaskList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/baguette/Ui.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/baguette/Ui.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/baguette/datatypes/Deadline.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/baguette/datatypes/Deadline.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/baguette/datatypes/Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/baguette/datatypes/Event.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Enum" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Merge.Settings">
+    <option name="BRANCH" value="branch-Level-5" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="branch-Level-7" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 2
+}</component>
+  <component name="ProjectId" id="2sdN8TPCogD0eXfNgo9A3UyLYWO" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Baguette.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/goodc/Downloads/checkstyle-idea-5.103.0.zip&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;org.infernus.idea.checkstyle.CheckStyleConfigurable&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RunManager">
+    <configuration name="Baguette" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="baguette.Baguette" />
+      <module name="ip" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-fdfe4dae3a2d-intellij.indexing.shared.core-IU-243.22562.218" />
+        <option value="bundled-js-predefined-d6986cc7102b-deb605915726-JavaScript-IU-243.22562.218" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f64fb04f-80c3-4691-a61a-71840e314429" name="Changes" comment="" />
+      <created>1738781333302</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1738781333302</updated>
+      <workItem from="1738781334425" duration="9049000" />
+      <workItem from="1738791057353" duration="27000" />
+      <workItem from="1738815979243" duration="184000" />
+      <workItem from="1738908456006" duration="3065000" />
+      <workItem from="1739508759352" duration="3940000" />
+      <workItem from="1739515529130" duration="948000" />
+      <workItem from="1739516539848" duration="1176000" />
+      <workItem from="1740117939170" duration="1140000" />
+      <workItem from="1740322568305" duration="1504000" />
+      <workItem from="1740324110021" duration="176000" />
+      <workItem from="1740761647242" duration="738000" />
+      <workItem from="1741307283901" duration="2165000" />
+      <workItem from="1741328195258" duration="9000" />
+      <workItem from="1741328397855" duration="26000" />
+      <workItem from="1741802584981" duration="19073000" />
+      <workItem from="1741823258248" duration="4443000" />
+      <workItem from="1741844563158" duration="207000" />
+      <workItem from="1741878552233" duration="158000" />
+      <workItem from="1741878720281" duration="7719000" />
+      <workItem from="1741908694340" duration="7410000" />
+      <workItem from="1741927724279" duration="2923000" />
+      <workItem from="1741963070082" duration="5065000" />
+      <workItem from="1742365194319" duration="1350000" />
+      <workItem from="1742374144263" duration="6000" />
+      <workItem from="1742475927550" duration="33000" />
+      <workItem from="1743239486236" duration="381000" />
+      <workItem from="1743239879404" duration="2838000" />
+      <workItem from="1743278691599" duration="4443000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>

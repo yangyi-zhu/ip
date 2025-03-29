@@ -46,8 +46,10 @@ public final class Constants {
     public static final String WARN_INT = "OI OI OI! Integer, my friend!";
     public static final String WARN_LOADING_ERROR = "Oh no, we ran into an unexpected error!"
             + NEW_LINE + "Try relaunching the program!";
-    public static final String WARN_INVALID_DATE_FORMAT = "Invalid date format! Expected format: dd MMM yyyy HH:mm"
+    public static final String WARN_INVALID_DATE_FORMAT = "Invalid date format! Expected format: dd-MM-yy HH:mm"
             + NEW_LINE + "Defaulting to current time...";
+    public static final String WARN_COMPLETE = "Task already completed! Try doing something else!";
+    public static final String WARN_INCOMPLETE = "Cannot unmark an incomplete task! Try again!";
 
     public static final String WELCOME = DIVIDER + NEW_LINE
             + "Bonjour et bievenue! Vous pouvez m'appeler Baguette!"

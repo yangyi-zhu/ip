@@ -8,7 +8,10 @@ import baguette.datatypes.Event;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.time.format.DateTimeFormatter;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.Scanner;
 
 /**
@@ -27,6 +30,7 @@ public class Storage {
      */
     public static Task parseTask(String line) {
         Task task;
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMM yyyy HH:mm", Locale.ENGLISH);
         switch (line.substring(0, 1)) {
         case "T":
             task = new Todo(line.substring(Constants.STORAGE_PREFIX_WIDTH).trim());
@@ -34,16 +38,15 @@ public class Storage {
         case "D":
             int ddlIndex = line.indexOf(Constants.PREFIX_D);
             task = new Deadline(line.substring(Constants.STORAGE_PREFIX_WIDTH, ddlIndex).trim(),
-                    line.substring(ddlIndex + Constants.STORAGE_TIME_WIDTH).trim());
+                    LocalDateTime.parse(line.substring(ddlIndex + Constants.STORAGE_TIME_WIDTH).trim(), formatter));
             break;
         case "E":
             int fromIndex = line.indexOf(Constants.PREFIX_E_F);
             int toIndex = line.indexOf(Constants.PREFIX_E_T);
             System.out.println(line.substring(fromIndex + Constants.STORAGE_TIME_WIDTH, toIndex));
             task = new Event(line.substring(Constants.STORAGE_PREFIX_WIDTH, fromIndex).trim(),
-                    line.substring(fromIndex + Constants.STORAGE_TIME_WIDTH, toIndex).trim(),
-                    line.substring(toIndex + Constants.STORAGE_TIME_WIDTH).trim()
-            );
+                    LocalDateTime.parse(line.substring(fromIndex + Constants.STORAGE_TIME_WIDTH, toIndex).trim(), formatter),
+                    LocalDateTime.parse(line.substring(toIndex + Constants.STORAGE_TIME_WIDTH).trim(), formatter));
             break;
         default:
             task = new Todo(line);
@@ -56,35 +59,62 @@ public class Storage {
     }
 
     /**
-     * Generates a list of tasks by reading from the storage file.
-     * Creates the local file and folder if they do not exist.
+     * Loads tasks by reading from the storage file into memory.
+     * Ensures target directory and file exist before reading.
+     * Parses non-empty lines into Tasks.
      *
-     * @return An ArrayList containing the tasks retrieved from the stored file.
+     * @return An {@code ArrayList<Task>} containing the tasks retrieved from the stored file.
+     * @throws RuntimeException If an I/O error occurs while reading.
      */
     public static ArrayList<Task> generateList() {
-        File folder = new File(folderPath);
-        File file  = new File(filePath);
+        ensureStorage();
+
         ArrayList<Task> list = new ArrayList<>();
+        File file = new File(filePath);
+
+        try (Scanner scanner = new Scanner(file)) {
+            populateTaskList(scanner, list);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        return list;
+    }
+
+    /**
+     * Reads lines from the scanner and adds valid tasks to the list.
+     *
+     * @param scanner The Scanner to read from.
+     * @param list The list to populate with parsed tasks.
+     */
+    public static void populateTaskList(Scanner scanner, ArrayList<Task> list) {
+        while (scanner.hasNextLine()) {
+            String line = scanner.nextLine().trim();
+            if (!line.isEmpty()) {
+                list.add(parseTask(line));
+            }
+        }
+    }
+
+    /**
+     * Ensures that the target storage folder and task files exist.
+     * Creates directory and file if missing.
+     * Throws runtime exception if an I/O error occurs.
+     */
+    public static void ensureStorage() {
+        File folder = new File(folderPath);
+        File file = new File(filePath);
+
         try {
             if (!folder.exists()) {
                 folder.mkdirs();
             }
             if (!file.exists()) {
                 file.createNewFile();
-            } else {
-                Scanner scanner = new Scanner(file);
-                while (scanner.hasNextLine()) {
-                    String line = scanner.nextLine();
-                    if (line.equals("")) {
-                        continue;
-                    }
-                    list.add(parseTask(line));
-                }
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        return list;
     }
 
     /**

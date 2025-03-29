@@ -9,35 +9,41 @@ import java.time.format.DateTimeParseException;
  */
 public class Parser {
     /**
-     * Processes the user input and executes commands based on prefix.
-     * Handles errors related to invalid input formats.
+     * Handles errors related to invalid indexing.
+     * Delegates command parsing to {@code handleCommand(String)}
      *
      * @param message The user input command to be processed.
      */
     public static void checkInput(String message) {
         try {
-            try {
-                if (message.startsWith("list")) {
-                    Ui.printList();
-                } else if (message.startsWith("delete ")) {
-                    int index = Integer.parseInt(message.substring(7));
-                    TaskList.deleteTask(index - 1);
-                } else if (message.startsWith("mark ")) {
-                    int index = Integer.parseInt(message.substring(5));
-                    TaskList.toggleMarkTask(index - 1, true);
-                } else if (message.startsWith("unmark ")) {
-                    int index = Integer.parseInt(message.substring(7));
-                    TaskList.toggleMarkTask(index - 1, false);
-                } else if (message.startsWith("find ")) {
-                    TaskList.find(message.substring(5).trim());
-                } else {
-                    TaskList.addTask(message);
-                }
-            } catch (NumberFormatException e) {
-                throw new BaguetteException(Constants.WARN_INT);
-            }
-        } catch (BaguetteException e) {
-            System.out.println(e);
+            handleCommand(message);
+        } catch (NumberFormatException e) {
+            Ui.printIntegerError();
+        }
+    }
+
+    /**
+     * Processes the user input and executes commands based on prefix.
+     *
+     * @param message The user input command to be processed.
+     * @throws NumberFormatException If an invalid format is detected for indexing.
+     */
+    public static void handleCommand(String message) throws NumberFormatException {
+        if (message.startsWith("list")) {
+            Ui.printList();
+        } else if (message.startsWith("delete ")) {
+            int index = Integer.parseInt(message.substring(7));
+            TaskList.deleteTask(index - 1);
+        } else if (message.startsWith("mark ")) {
+            int index = Integer.parseInt(message.substring(5));
+            TaskList.toggleMarkTask(index - 1, true);
+        } else if (message.startsWith("unmark ")) {
+            int index = Integer.parseInt(message.substring(7));
+            TaskList.toggleMarkTask(index - 1, false);
+        } else if (message.startsWith("find ")) {
+            TaskList.find(message.substring(5).trim());
+        } else {
+            TaskList.addTask(message);
         }
     }
 
@@ -61,19 +67,14 @@ public class Parser {
      * @return The parsed LocalDateTime object.
      */
     public static LocalDateTime parseDateTime(String message) {
-        LocalDateTime dateTime;
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMM yyyy HH:mm", Locale.ENGLISH);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yy HH:mm", Locale.ENGLISH);
+
         try {
-            try {
-                dateTime = LocalDateTime.parse(message, formatter);
-            } catch (DateTimeParseException e) {
-                throw new BaguetteException(Constants.WARN_INVALID_DATE_FORMAT);
-            }
-        } catch (BaguetteException e) {
-            System.out.println(e);
-            dateTime = LocalDateTime.now();
+            return LocalDateTime.parse(message, formatter);
+        } catch (DateTimeParseException e) {
+            System.out.println(new BaguetteException(Constants.WARN_INVALID_DATE_FORMAT));
+            return LocalDateTime.now();
         }
-        return dateTime;
     }
 
     /**

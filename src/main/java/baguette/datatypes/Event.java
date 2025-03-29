@@ -25,6 +25,19 @@ public class Event extends Task {
     }
 
     /**
+     * Constructs a new Event task with the specified description, start time, and end time.
+     *
+     * @param description The description of the event.
+     * @param from The start date and time in LocalDateTime format, which is parsed into a LocalDateTime object.
+     * @param to The end date and time in LocalDateTime format, which is parsed into a LocalDateTime object.
+     */
+    public Event(String description, LocalDateTime from, LocalDateTime to) {
+        super(description);
+        this.from = from;
+        this.to = to;
+    }
+
+    /**
      * Retrieves the formatted start date and time of the event.
      *
      * @return A string representation of the event's start time.

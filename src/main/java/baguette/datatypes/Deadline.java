@@ -22,6 +22,17 @@ public class Deadline extends Task {
     }
 
     /**
+     * Constructs a new Deadline task with the specified description and deadline.
+     *
+     * @param description The description of the task.
+     * @param deadline The due date and time in LocalDateTime format, which is parsed into a LocalDateTime object.
+     */
+    public Deadline(String description, LocalDateTime deadline) {
+        super(description);
+        this.ddl = deadline;
+    }
+
+    /**
      * Retrieves the type identifier for the deadline task.
      *
      * @return A string representing the task type, "[D]" for deadline.

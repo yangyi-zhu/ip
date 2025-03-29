@@ -119,5 +119,36 @@ public class Ui {
         System.out.println(Constants.DIVIDER + Constants.NEW_LINE);
     }
 
+    /**
+     * Prints an error message when marking/unmarking fails due to invalid indexing.
+     *
+     * @param isMark Whether the task was to be marked as complete or otherwise.
+     */
+    public static void printToggleMarkFail(boolean isMark) {
+        String output = Constants.NEW_LINE + Constants.DIVIDER + Constants.NEW_LINE
+                + "Failed to " + (isMark ? "mark" : "unmark") + " as completed, "
+                + "index out of bounds."
+                + Constants.NEW_LINE + Constants.DIVIDER + Constants.NEW_LINE;
+        System.out.println(output);
+    }
+
+    /**
+     * Prints an error message when an Integer is expected but another format is detected.
+     */
+    public static void printIntegerError() {
+        System.out.println(Constants.NEW_LINE + Constants.DIVIDER + Constants.NEW_LINE
+                + Constants.WARN_INT + Constants.NEW_LINE + Constants.DIVIDER + Constants.NEW_LINE);
+    }
+
+    public static void printAlreadyCompleted() {
+        System.out.println(Constants.NEW_LINE + Constants.DIVIDER + Constants.NEW_LINE
+                + Constants.WARN_COMPLETE + Constants.NEW_LINE + Constants.DIVIDER + Constants.NEW_LINE);
+    }
+
+    public static void printIncomplete() {
+        System.out.println(Constants.NEW_LINE + Constants.DIVIDER + Constants.NEW_LINE
+                + Constants.WARN_INCOMPLETE + Constants.NEW_LINE + Constants.DIVIDER + Constants.NEW_LINE);
+    }
+
     private Ui() {}
 }

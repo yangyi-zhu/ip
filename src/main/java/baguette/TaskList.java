@@ -60,13 +60,23 @@ public class TaskList {
      * @param isMarked True if marking the task as completed, false if unmarking.
      */
     public static void toggleMarkTask(int index, boolean isMarked) {
-        if (isMarked) {
-            tasks.get(index).mark();
-        } else {
-            tasks.get(index).unmark();
+        if (index < 0 || index >= tasks.size()) {
+            Ui.printToggleMarkFail(isMarked);
+            return;
         }
 
-        Ui.printMarkStatus(tasks.get(index), isMarked);
+        Task task = tasks.get(index);
+        if (isMarked && !task.getIsDone()) {
+            task.mark();
+            Ui.printMarkStatus(tasks.get(index), isMarked);
+        } else if (!isMarked && task.getIsDone()) {
+            task.unmark();
+            Ui.printMarkStatus(tasks.get(index), isMarked);
+        } else if (isMarked && task.getIsDone()) {
+            Ui.printAlreadyCompleted();
+        } else {
+            Ui.printIncomplete();
+        }
 
         try {
             Storage.updateFile(tasks);
