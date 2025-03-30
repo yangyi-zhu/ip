@@ -44,7 +44,7 @@ Baguette is a lightweight, command-line task management application designed to 
 
 ### ❓ FAQs
 **Q:** How do I transfer data to a friend or another device of my own? <br>
-**A:** Locate the directory where you stored the `.jar` file. Open `../data` and your list should be saved in a file called `tasks.txt`. Place this file in the `../data` directory on the secondary device and run the program as normal.
+**A:** Locate the directory where you stored the `.jar` file. Open `../data` and your list should be saved in a file called `tasks.txt`. Place this file in the `../data` directory on the secondary device and run the program as described above.
 
 ### 🛠️ Known Issues
 By default, completed tasks are marked with a checkmark `✓` symbol. This is not supported by all devices, and the user might see a question mark `?` in its place.
