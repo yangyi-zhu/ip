@@ -20,23 +20,23 @@ Baguette is a lightweight, command-line task management application designed to 
 
 ### ✅ Task Management
 ✍🏻 **Add Tasks:** Create different types of tasks, including:
-    - **To-dos:** Simple tasks without a deadline.
-      > **Format:** todo [description] <br>
-      > **Example:** todo Do the laundry
-    - **Deadlines:** Tasks with a specific due date.
-      > **Format:** deadline [description] ddl: [DD-MM-YY HH:MM] <br>
-      > **Example:** deadline CS2113 Increment L5 ddl: 14-02-25 16:00
-    - **Events:** Tasks with a start and end time.
-      > **Format:** event [description] from: [DD-MM-YY HH:MM] to: [DD-MM-YY HH:MM] <br>
-      > **Example:** event Josh's birthday party from: 03-03-25 15:00 to: 04-03-25 00:00
+- **To-dos:** Simple tasks without a deadline.
+  > **Format:** todo [description] <br>
+  > **Example:** todo Do the laundry
+- **Deadlines:** Tasks with a specific due date.
+  > **Format:** deadline [description] ddl: [DD-MM-YY HH:MM] <br>
+  > **Example:** deadline CS2113 Increment L5 ddl: 14-02-25 16:00
+- **Events:** Tasks with a start and end time.
+  > **Format:** event [description] from: [DD-MM-YY HH:MM] to: [DD-MM-YY HH:MM] <br>
+  > **Example:** event Josh's birthday party from: 03-03-25 15:00 to: 04-03-25 00:00
 ❌ **Mark & Unmark Tasks:** Keeps track of completed and pending tasks.
-  > **Format:** mark/unmark [index]
+> **Format:** mark/unmark [index]
 🗑️ **Delete Tasks:** Removes tasks that are no longer needed.
-  > **Format:** delete [index]
+> **Format:** delete [index]
 📋 **View Task List:** Displays all stored tasks in an organized format.
-  > **Format:** list
+> **Format:** list
 🔎 **Find Task:** Searches for tasks containing the given string (case-sensitive).
-  > **Format:** find [keyword]
+> **Format:** find [keyword]
 
 ### ❓ FAQs
 **Q:** How do I transfer data to a friend or another device of my own? <br>
