@@ -29,12 +29,16 @@ Baguette is a lightweight, command-line task management application designed to 
 - **Events:** Tasks with a start and end time.
   > **Format:** `event [description] from: [DD-MM-YY HH:MM] to: [DD-MM-YY HH:MM]` <br>
   > **Example:** `event Josh's birthday party from: 03-03-25 15:00 to: 04-03-25 00:00`
+  
 ❌ **Mark & Unmark Tasks:** Keeps track of completed and pending tasks.
-> **Format:** `mark/unmark [index]` <br>
+> **Format:** `mark/unmark [index]`
+
 🗑️ **Delete Tasks:** Removes tasks that are no longer needed.
-> **Format:** `delete [index]` <br>
+> **Format:** `delete [index]`
+
 📋 **View Task List:** Displays all stored tasks in an organized format.
-> **Format:** `list` <br>
+> **Format:** `list`
+
 🔎 **Find Task:** Searches for tasks containing the given string (case-sensitive).
 > **Format:** `find [keyword]`
 
