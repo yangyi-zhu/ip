@@ -3,17 +3,15 @@
 Baguette is a lightweight, command-line task management application designed to help users organize and track their tasks efficiently.
 
 ### 💻 Setup
-1. Ensure that you have Java 17 installed
-   \Open CMD and type the following
+1. Ensure that you have Java 17 installed. Open CMD and type the following:
     ```
     java -version
     ```
-   \If another version is detected or if you do not have Java installed, visit
+   If another version is detected or if you do not have Java installed, visit:
    > https://docs.aws.amazon.com/corretto/latest/corretto-17-ug/downloads-list.html
-2. Download `Baguette.v0_3.jar` and move it to any directory you desire
+2. Download `Baguette.v0_3.jar` from the following link and move it to any directory you desire
    > https://github.com/yangyi-zhu/ip/releases/tag/v0.3
-3. Click the `.jar` file to run
-   \If no window pops up, right-click, copy file path, open CMD and type the following
+3. Click the `.jar` file to run. If no window pops up, right-click, copy file path, open CMD and enter the following:
    ```
    java -jar [path]
    ```
